@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Briefcase, Cake, Heart, Users, MessageSquare } from 'lucide-react';
 import { CateringFormState } from '../types';
 import { imageCdn } from '../data/imageCdn';
+import { contactInfo } from '../data/contactInfo';
 
 export const CateringSection: React.FC = () => {
   const [formData, setFormData] = useState<CateringFormState>({
@@ -14,28 +15,52 @@ export const CateringSection: React.FC = () => {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Partial<CateringFormState>>({});
+
+  const validate = () => {
+    const nextErrors: Partial<CateringFormState> = {};
+    const trimmedName = formData.name.trim();
+    const trimmedPhone = formData.phone.trim();
+    const phoneDigits = trimmedPhone.replace(/[^\d+]/g, '');
+    const phoneNumberPattern = /^\+?\d{10,15}$/;
+
+    if (!trimmedName) {
+      nextErrors.name = 'Please enter your name.';
+    } else if (trimmedName.length < 2) {
+      nextErrors.name = 'Please enter a valid name.';
+    }
+
+    if (!trimmedPhone) {
+      nextErrors.phone = 'Please enter your phone number.';
+    } else if (!phoneNumberPattern.test(phoneDigits)) {
+      nextErrors.phone = 'Please enter a valid phone number with 10 to 15 digits.';
+    }
+
+    if (formData.guestsCount && Number.isNaN(Number(formData.guestsCount))) {
+      nextErrors.guestsCount = 'Please enter a valid guest count.';
+    }
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) {
-      alert('Please fill in your name and contact phone number.');
-      return;
-    }
+    if (!validate()) return;
 
-    // Format WhatsApp message
-    const waMessage = `Hello Harrison Spice! I would like to enquire about Catering Services:
-- Name: ${formData.name}
-- Phone: ${formData.phone}
-- Event Type: ${formData.eventType}
-- Event Date: ${formData.eventDate || 'TBD'}
-- Guests: ${formData.guestsCount || 'Not specified'}
-- Message: ${formData.message || 'None'}`;
+    const waMessage = `
+Name: ${formData.name.trim()}
+Phone: ${formData.phone.trim()}
+Event Type: ${formData.eventType}
+Event Date: ${formData.eventDate || 'TBD'}
+Guests: ${formData.guestsCount || 'Not specified'}
+Message: ${formData.message.trim() || 'None'}`;
 
     const encodedMsg = encodeURIComponent(waMessage);
-    const waUrl = `https://wa.me/441162301188?text=${encodedMsg}`;
-    
+    const waUrl = `${contactInfo.whatsappHref}?text=${encodedMsg}`;
+
     setFormSubmitted(true);
-    window.open(waUrl, '_blank');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
   };
 
   const eventCategories = [
@@ -113,22 +138,31 @@ export const CateringSection: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="Your Name *"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Phone Number *"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
-                  />
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Your Name *"
+                      autoComplete="name"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
+                    />
+                    {errors.name && <p className="mt-1 text-xs text-red-700">{errors.name}</p>}
+                  </div>
+
+                  <div>
+                    <input
+                      type="tel"
+                      placeholder="Phone Number *"
+                      autoComplete="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
+                    />
+                    {errors.phone && <p className="mt-1 text-xs text-red-700">{errors.phone}</p>}
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -150,14 +184,17 @@ export const CateringSection: React.FC = () => {
                     className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
                   />
                 </div>
-
-                <input
-                  type="number"
-                  placeholder="No. of Guests"
-                  value={formData.guestsCount}
-                  onChange={(e) => setFormData({ ...formData, guestsCount: e.target.value })}
-                  className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
-                />
+                <div>
+                  <input
+                    type="number"
+                    min="1"
+                    placeholder="No. of Guests"
+                    value={formData.guestsCount}
+                    onChange={(e) => setFormData({ ...formData, guestsCount: e.target.value })}
+                    className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 placeholder-gray-500 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
+                  />
+                  {errors.guestsCount && <p className="mt-1 text-xs text-red-700">{errors.guestsCount}</p>}
+                </div>
 
                 <textarea
                   placeholder="Your Message..."

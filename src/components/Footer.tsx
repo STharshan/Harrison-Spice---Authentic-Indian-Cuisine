@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, MessageCircle, Heart } from 'lucide-react';
+import { contactInfo } from '../data/contactInfo';
 
 export const Footer: React.FC = () => {
   return (
@@ -73,7 +74,7 @@ export const Footer: React.FC = () => {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/441162301188"
+                href={contactInfo.whatsappHref}
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-full border border-[#C5A059]/50 flex items-center justify-center text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition-all"

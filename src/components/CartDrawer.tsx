@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, ShoppingBag, Plus, Minus, Trash2, Phone, MessageSquare, Clock } from 'lucide-react';
 import { CartItem } from '../types';
+import { contactInfo } from '../data/contactInfo';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -61,7 +62,7 @@ ${orderType === 'delivery' ? `- Delivery Fee: £2.50\n` : ''}- Total Price: £${
 Please confirm my order & estimated collection/delivery time.`;
 
     const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/441162301188?text=${encoded}`, '_blank');
+    window.open(`${contactInfo.whatsappHref}?text=${encoded}`, '_blank');
   };
 
   return (
@@ -241,7 +242,7 @@ Please confirm my order & estimated collection/delivery time.`;
                 </button>
 
                 <a
-                  href="tel:01162301188"
+                  href={contactInfo.telHref}
                   className="py-3 px-3 rounded border border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all text-center"
                 >
                   <Phone className="w-3.5 h-3.5" />

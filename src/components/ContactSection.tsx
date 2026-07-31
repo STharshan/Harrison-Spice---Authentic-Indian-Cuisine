@@ -1,5 +1,6 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, MapPin, Clock } from 'lucide-react';
+import { contactInfo } from '../data/contactInfo';
 
 export const ContactSection: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ export const ContactSection: React.FC = () => {
 
             <div className="space-y-6">
               <a
-                href="tel:01162301188"
+                href={contactInfo.telHref}
                 className="flex items-start gap-4 text-gray-300 hover:text-[#C5A059] transition-colors group"
               >
                 <div className="w-10 h-10 rounded-full border border-[#C5A059]/50 flex items-center justify-center text-[#C5A059] shrink-0 bg-black/50 group-hover:bg-[#C5A059] group-hover:text-black transition-all">
@@ -25,22 +26,7 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <p className="text-base text-gray-400 font-medium">Call Us Directly</p>
                   <p className="text-base sm:text-lg font-bold text-white group-hover:text-[#C5A059] transition-colors">
-                    0116 230 1188
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href="mailto:info@harrisonspicemountsorrel.co.uk"
-                className="flex items-start gap-4 text-gray-300 hover:text-[#C5A059] transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-full border border-[#C5A059]/50 flex items-center justify-center text-[#C5A059] shrink-0 bg-black/50 group-hover:bg-[#C5A059] group-hover:text-black transition-all">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-base text-gray-400 font-medium">Email Enquiries</p>
-                  <p className="text-base sm:text-lg font-semibold text-white group-hover:text-[#C5A059] transition-colors break-all">
-                    info@harrisonspicemountsorrel.co.uk
+                    {contactInfo.phoneDisplay}
                   </p>
                 </div>
               </a>
@@ -78,7 +64,7 @@ export const ContactSection: React.FC = () => {
           <div className="lg:col-span-7 h-full min-h-[360px] relative overflow-hidden" data-aos="fade-left">
             <iframe
               title="Harrison Spice Mountsorrel Map Location"
-              src="https://maps.google.com/maps?q=26%20Leicester%20Road%20Mountsorrel%20LE12%207AJ&z=15&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2416.21282537102!2d-1.1401479233062006!3d52.72835187211658!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879df0866f109b3%3A0xfe8965e18ac70a73!2s63%20b%20Leicester%20Rd%2C%20Mountsorrel%2C%20Loughborough%20LE12%207AJ%2C%20UK!5e0!3m2!1sen!2slk!4v1785513399602!5m2!1sen!2slk"
               className="w-full h-full min-h-[380px] border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
