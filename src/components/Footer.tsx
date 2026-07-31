@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram, MessageCircle, Heart } from 'lucide-react';
 import { contactInfo } from '../data/contactInfo';
+import logo from "../assets/images/logo.png"
 
 export const Footer: React.FC = () => {
   return (
@@ -9,19 +10,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-gray-800/80">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border border-[#C5A059] p-1 flex items-center justify-center bg-black">
-                <div className="w-full h-full rounded-full border border-dashed border-[#C5A059]/60 flex items-center justify-center text-[#C5A059] font-brand text-sm font-bold">
-                  HS
-                </div>
-              </div>
-              <div>
-                <span className="font-brand text-base font-bold text-white tracking-wider block leading-tight">
-                  Harrison Spice
-                </span>
-                <span className="text-sm text-[#C5A059] font-serif uppercase tracking-[0.16em]">
-                  Mountsorrel
-                </span>
-              </div>
+              <img
+                src={logo} // Replace with your actual logo path
+                alt="Harrison Spice Logo"
+                className="w-30 h-20" // Apply similar styling if needed
+              />
             </div>
             <p className="text-base text-gray-500 font-light leading-relaxed">
               Mountsorrel&apos;s premier Indian takeaway delivering authentic spices and unforgettable recipes.
@@ -56,7 +49,7 @@ export const Footer: React.FC = () => {
             </h4>
             <div className="flex items-center gap-3">
               <a
-                href="https://facebook.com"
+                href="/#"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-full border border-[#C5A059]/50 flex items-center justify-center text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition-all"
@@ -65,7 +58,7 @@ export const Footer: React.FC = () => {
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com"
+                href="/#"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-full border border-[#C5A059]/50 flex items-center justify-center text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition-all"
@@ -88,7 +81,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-base text-gray-500 gap-4">
           <p>© 2026s Harrison Spice Mountsorrel. All Rights Reserved.</p>
-        
+
           <p>
             Powered by{' '}
             <a
