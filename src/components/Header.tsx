@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Menu as MenuIcon, X, ShoppingBag } from 'lucide-react';
+import { Menu as MenuIcon, X, ShoppingBag } from 'lucide-react';
 import logoImg from '../assets/images/logo.png'; // Adjust path and file name to match your assets folder
+import { openOrderMenu } from '../utils/openorder';
 
 interface HeaderProps {
-  onOpenMenu: () => void;
   cartCount: number;
   onOpenCart: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenMenu, cartCount, onOpenCart }) => {
+export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
@@ -102,12 +102,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMenu, cartCount, onOpenCar
           )}
 
           <button
-            onClick={onOpenMenu}
+            onClick={openOrderMenu}
             className="px-5 py-2.5 rounded-full border border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition-all duration-300 text-base uppercase tracking-[0.18em] font-bold flex items-center gap-2 group shadow-sm"
           >
             ORDER NOW
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          <span
+            className="glf-button hidden"
+            data-glf-cuid="ebfe3305-0575-47d5-b2d3-62123d08a1ba"
+            data-glf-ruid="4bb2e59e-0c58-4296-b385-c76c00d2249e"
+          />
           </button>
+
         </div>
 
         {/* Mobile controls */}
@@ -153,12 +158,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMenu, cartCount, onOpenCar
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenMenu();
+                openOrderMenu();
               }}
               className="mt-2 w-full py-3 rounded-full bg-[#C5A059] text-black text-base font-bold uppercase tracking-[0.16em] flex items-center justify-center gap-2"
             >
-              ORDER NOW ONLINE <ArrowRight className="w-4 h-4" />
+              ORDER NOW ONLINE
             </button>
+
+            <span
+              className="glf-button hidden"
+              data-glf-cuid="ebfe3305-0575-47d5-b2d3-62123d08a1ba"
+              data-glf-ruid="4bb2e59e-0c58-4296-b385-c76c00d2249e"
+            />
           </div>
         </div>
       )}

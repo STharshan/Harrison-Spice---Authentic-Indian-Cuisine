@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Clock, Star, Truck } from 'lucide-react';
 import { imageCdn } from '../data/imageCdn';
+import { openOrderMenu } from '../utils/openorder';
 
 interface HeroProps {
   onOpenMenu: () => void;
@@ -47,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenMenu }) => {
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-4">
             <button
-              onClick={onOpenMenu}
+              onClick={openOrderMenu}
               className="px-7 py-3.5 rounded-sm bg-[#C5A059] hover:bg-[#D4AF37] text-black font-bold text-base uppercase tracking-[0.18em] flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-[#C5A059]/20"
             >
               ORDER ONLINE

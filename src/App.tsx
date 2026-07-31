@@ -75,7 +75,6 @@ export default function App() {
     <div className="min-h-screen bg-[#0b0b0b] text-[#e2e8f0] relative font-sans selection:bg-[#C5A059] selection:text-black overflow-x-hidden">
       {/* Header Bar */}
       <Header
-        onOpenMenu={() => setIsMenuModalOpen(true)}
         cartCount={cartTotalCount}
         onOpenCart={() => setIsCartOpen(true)}
       />
