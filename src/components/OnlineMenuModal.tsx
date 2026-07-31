@@ -23,19 +23,32 @@ export const OnlineMenuModal: React.FC<OnlineMenuModalProps> = ({
 
   const categories = [
     { id: 'all', name: 'All Dishes' },
-    { id: 'curries', name: 'Curries' },
-    { id: 'starters', name: 'Starters' },
-    { id: 'specials', name: 'Chef Specials' },
-    { id: 'biryani', name: 'Biryani' },
-    { id: 'breads', name: 'Breads & Naan' },
-    { id: 'rice', name: 'Rice' },
+    { id: 'Vegetarian Starter', name: 'Veg Starters' },
+    { id: 'Non Vegetarian Starter', name: 'Non-Veg Starters' },
+    { id: 'Fish', name: 'Fish' },
+    { id: 'Tandoori Specialities', name: 'Tandoori' },
+    { id: 'Balti Special Dishes', name: 'Balti' },
+    { id: 'Sagwala Dishes', name: 'Sagwala' },
+    { id: 'Tawa Dishes', name: 'Tawa' },
+    { id: 'Jalfrezi Dishes', name: 'Jalfrezi' },
+    { id: 'Rogan Josh Dishes', name: 'Rogan Josh' },
+    { id: 'Korai Dishes', name: 'Korai' },
+    { id: 'Masala Special Dishes', name: 'Masala' },
+    { id: 'Specialities Dishes', name: 'Specialities' },
+    { id: 'Traditional Indian Dishes', name: 'Traditional' },
+    { id: 'Biryani Dishes', name: 'Biryani' },
+    { id: 'Rice Dishes', name: 'Rice' },
+    { id: 'Naan & Paratha', name: 'Naan & Paratha' },
+    { id: 'Sundries', name: 'Sundries' },
+    { id: 'Set Meal', name: 'Set Meal' },
   ];
 
   const filteredItems = menuItems.filter((item) => {
     const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+    const itemDescription = item.description ?? '';
     const matchesSearch =
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase());
+      itemDescription.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -135,9 +148,11 @@ export const OnlineMenuModal: React.FC<OnlineMenuModalProps> = ({
                         )}
                       </div>
 
-                      <p className="text-[11px] text-gray-400 font-light line-clamp-2 mb-2">
-                        {item.description}
-                      </p>
+                      {item.description?.trim() && (
+                        <p className="text-[11px] text-gray-400 font-light line-clamp-2 mb-2">
+                          {item.description}
+                        </p>
+                      )}
 
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-[#C5A059]">
