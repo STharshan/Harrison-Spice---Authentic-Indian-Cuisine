@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Maximize2 } from 'lucide-react';
 import { galleryData } from '../data/galleryData';
 import { GalleryItem } from '../types';
+import logo from "../assets/images/logo.png"
 
 interface GallerySectionProps {
   onSelectImage: (item: GalleryItem) => void;
@@ -39,10 +40,10 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectImage })
               data-aos="fade-up"
               data-aos-delay={idx * 100}
               onClick={() => onSelectImage(item)}
-              className="relative h-64 sm:h-72 rounded-xl overflow-hidden cursor-pointer group shadow-md border border-gray-200/80 bg-gray-100"
+              className="relative h-64 sm:h-38 rounded-xl overflow-hidden cursor-pointer group shadow-md border border-gray-200/80 bg-gray-100"
             >
               <img
-                src={item.image}
+                src={logo}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 referrerPolicy="no-referrer"

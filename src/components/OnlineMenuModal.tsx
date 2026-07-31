@@ -143,25 +143,6 @@ export const OnlineMenuModal: React.FC<OnlineMenuModalProps> = ({
                         <span className="text-xs font-bold text-[#C5A059]">
                           £{item.price.toFixed(2)}
                         </span>
-
-                        <button
-                          onClick={() => onAddToCart(item)}
-                          className={`px-3 py-1.5 rounded text-[11px] font-bold flex items-center gap-1 transition-all ${
-                            isAdded
-                              ? 'bg-emerald-600 text-white'
-                              : 'bg-[#C5A059] hover:bg-[#D4AF37] text-black'
-                          }`}
-                        >
-                          {isAdded ? (
-                            <>
-                              <Check className="w-3.5 h-3.5" /> Added
-                            </>
-                          ) : (
-                            <>
-                              <Plus className="w-3.5 h-3.5" /> Add
-                            </>
-                          )}
-                        </button>
                       </div>
                     </div>
                   </div>
