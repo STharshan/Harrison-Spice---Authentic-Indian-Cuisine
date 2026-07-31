@@ -1,0 +1,6 @@
+{
+  "name": "Harrison Spice - Authentic Indian Cuisine",
+  "description": "Mountsorrel's Finest Indian Takeaway & Restaurant offering authentic Indian cuisine crafted with passion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
