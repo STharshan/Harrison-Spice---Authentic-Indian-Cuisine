@@ -31,7 +31,7 @@ export const ReviewsSection: React.FC = () => {
             WHAT OUR CUSTOMERS SAY
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#1c1917] font-semibold mb-4 leading-tight">
-            Rated 4.9 Stars on Google
+            Rated 4.5 Stars on Google
           </h2>
           <div className="flex items-center justify-center gap-1 text-[#C5A059]">
             {[...Array(5)].map((_, i) => (

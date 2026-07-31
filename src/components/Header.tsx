@@ -106,11 +106,6 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
             className="px-5 py-2.5 rounded-full border border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition-all duration-300 text-base uppercase tracking-[0.18em] font-bold flex items-center gap-2 group shadow-sm"
           >
             ORDER NOW
-          <span
-            className="glf-button hidden"
-            data-glf-cuid="ebfe3305-0575-47d5-b2d3-62123d08a1ba"
-            data-glf-ruid="4bb2e59e-0c58-4296-b385-c76c00d2249e"
-          />
           </button>
 
         </div>
@@ -164,12 +159,6 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
             >
               ORDER NOW ONLINE
             </button>
-
-            <span
-              className="glf-button hidden"
-              data-glf-cuid="ebfe3305-0575-47d5-b2d3-62123d08a1ba"
-              data-glf-ruid="4bb2e59e-0c58-4296-b385-c76c00d2249e"
-            />
           </div>
         </div>
       )}

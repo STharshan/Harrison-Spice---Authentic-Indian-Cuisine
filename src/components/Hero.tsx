@@ -94,7 +94,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenMenu }) => {
             </div>
             <div>
               <p className="text-sm sm:text-base text-[#C5A059] font-bold tracking-[0.18em] uppercase">
-                4.9 STAR RATING
+                4.5 STAR RATING
               </p>
               <p className="text-base sm:text-lg font-bold text-white tracking-wide">
                 ON GOOGLE
