@@ -11,7 +11,7 @@ export const menuItems: MenuItem[] = [
     price: 9.95,
     image: imageCdn.menu.butterChicken,
     isPopular: true,
-    spiceLevel: 1,
+   
   },
   {
     id: 'm2',
@@ -21,7 +21,7 @@ export const menuItems: MenuItem[] = [
     price: 9.50,
     image: imageCdn.menu.chickenTikka,
     isPopular: true,
-    spiceLevel: 2,
+   
   },
   {
     id: 'm3',
@@ -31,7 +31,7 @@ export const menuItems: MenuItem[] = [
     price: 10.50,
     image: imageCdn.menu.lambRogan,
     isPopular: true,
-    spiceLevel: 2,
+   
   },
   {
     id: 'm4',
@@ -41,7 +41,7 @@ export const menuItems: MenuItem[] = [
     price: 14.95,
     image: imageCdn.menu.specialBiryani,
     isPopular: true,
-    spiceLevel: 2,
+   
   },
   {
     id: 'm5',
@@ -54,40 +54,54 @@ export const menuItems: MenuItem[] = [
     isVegetarian: true,
   },
 
-  // Starters
+  // VegetarianStarter
   {
-    id: 'm6',
-    name: 'Onion Bhaji (4pcs)',
-    category: 'starters',
-    description: 'Crispy fried onion fritters spiced with gram flour, cumin, coriander and mint chutney.',
-    price: 4.50,
-    isVegetarian: true,
-    spiceLevel: 1,
+    "id": "m6",
+    "name": "Onion Bhaji (4pcs)",
+    "category": "VegetarianStarter",
+    "description": "",
+    "price": 4.50,
+    "isVegetarian": true
   },
   {
-    id: 'm7',
-    name: 'Vegetable Samosa (2pcs)',
-    category: 'starters',
-    description: 'Crispy pastry filled with spiced potatoes, green peas and ground cumin.',
-    price: 4.20,
-    isVegetarian: true,
-    spiceLevel: 1,
+    "id": "m7",
+    "name": "Onion Bhaji",
+    "category": "VegetarianStarter",
+    "description": "",
+    "price": 3.95,
+    "isVegetarian": true
   },
   {
-    id: 'm8',
-    name: 'Chicken Tikka Starter',
-    category: 'starters',
-    description: 'Boneless chicken marinated in spiced yogurt and grilled in the tandoor clay oven.',
-    price: 5.95,
-    spiceLevel: 2,
+    "id": "m8",
+    "name": "Veg Samosa (3pcs)",
+    "category": "VegetarianStarter",
+    "description": "",
+    "price": 3.95,
+    "isVegetarian": true
   },
   {
-    id: 'm9',
-    name: 'Seekh Kebab',
-    category: 'starters',
-    description: 'Minced lamb blended with herbs, ginger and fresh green chillies, cooked on skewers.',
-    price: 6.20,
-    spiceLevel: 2,
+    "id": "m9",
+    "name": "Garlic Mushroom Puree",
+    "category": "VegetarianStarter",
+    "description": "",
+    "price": 4.95,
+    "isVegetarian": true
+  },
+  {
+    "id": "m10",
+    "name": "Paneer Shashlick",
+    "category": "VegetarianStarter",
+    "description": "",
+    "price": 4.50,
+    "isVegetarian": true
+  },
+  {
+    "id": "m11",
+    "name": "Aloo Chat",
+    "category": "VegetarianStarter",
+    "description": "",
+    "price": 3.95,
+    "isVegetarian": true
   },
 
   // Chef Specials
@@ -98,7 +112,7 @@ export const menuItems: MenuItem[] = [
     description: 'Chef recommendation: Tender chicken and lamb cooked together with capsicum, onions and special crushed spices.',
     price: 13.95,
     isPopular: true,
-    spiceLevel: 3,
+   
   },
   {
     id: 'm11',
@@ -106,7 +120,7 @@ export const menuItems: MenuItem[] = [
     category: 'specials',
     description: 'Jumbo king prawns tossed with green peppers, onions, tomatoes and green chillies in a thick sauce.',
     price: 14.50,
-    spiceLevel: 3,
+   
   },
   {
     id: 'm12',
@@ -115,7 +129,7 @@ export const menuItems: MenuItem[] = [
     description: 'Cottage cheese cubes simmering in a velvety butter, tomato and cashew nut sauce.',
     price: 9.95,
     isVegetarian: true,
-    spiceLevel: 1,
+   
   },
 
   // Rice & Breads

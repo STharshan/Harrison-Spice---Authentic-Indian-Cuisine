@@ -1,7 +1,7 @@
 export interface MenuItem {
   id: string;
   name: string;
-  category: 'starters' | 'curries' | 'specials' | 'biryani' | 'tandoori' | 'breads' | 'rice' | 'drinks';
+  category: 'Vegetarian Starter' | 'Non Vegetarian Starter' | 'Fish' | 'Tandoori Specialities' | 'Balti Special Dishes' | 'Sagwala Dishes' | 'Tawa Dishes' | 'Jalfrezi Dishes' | 'Rogan Josh Dishes' | 'Korai Dishes' | 'Masala Special Dishes' | 'Biryani Dishes' | 'Specialities Dishes' | 'Traditional Indian Dishes' | 'Rice Dishes'| 'Naan & Paratha' | 'Sundries' | 'Set Meal';
   description: string;
   price: number;
   image?: string;

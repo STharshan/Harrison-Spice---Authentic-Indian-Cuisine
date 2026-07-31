@@ -38,14 +38,16 @@ export const SignatureDishes: React.FC<SignatureDishesProps> = ({ onOpenMenu, on
               className="bg-[#121212] border border-[#C5A059]/35 hover:border-[#C5A059] rounded-xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 shadow-xl group hover:shadow-[#C5A059]/10"
             >
               {/* Circular Dish Image */}
-              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-[#C5A059]/50 mb-4 p-1 bg-black shrink-0 group-hover:border-[#C5A059] transition-colors">
-                <img
-                  src={dish.image || imageCdn.menu.butterChicken}
-                  alt={dish.name}
-                  className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
+              {dish.image && (
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-[#C5A059]/50 mb-4 p-1 bg-black shrink-0 group-hover:border-[#C5A059] transition-colors">
+                  <img
+                    src={dish.image}
+                    alt={dish.name}
+                    className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              )}
 
               {/* Title */}
               <h3 className="font-serif text-base sm:text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#C5A059] transition-colors">

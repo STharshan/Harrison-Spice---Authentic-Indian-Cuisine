@@ -111,10 +111,7 @@ export default function App() {
       <Footer />
 
       {/* Floating Cart & Order Badge */}
-      <FloatingCartBadge
-        onOpenMenu={() => setIsMenuModalOpen(true)}
-        cartCount={cartTotalCount}
-      />
+      <FloatingCartBadge cartCount={cartTotalCount} />
 
       {/* Interactive Online Menu Modal */}
       <OnlineMenuModal

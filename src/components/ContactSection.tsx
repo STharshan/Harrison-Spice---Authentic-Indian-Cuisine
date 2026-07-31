@@ -38,7 +38,7 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <p className="text-base text-gray-400 font-medium">Address</p>
                   <p className="text-base sm:text-lg font-semibold text-white leading-snug">
-                    26 Leicester Road, Mountsorrel, <br />
+                    63b Leicester Road, Mountsorrel, <br />
                     Leicestershire, LE12 7AJ
                   </p>
                 </div>

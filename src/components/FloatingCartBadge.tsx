@@ -1,16 +1,16 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
+import { openOrderMenu } from '../utils/openorder';
 
 interface FloatingCartBadgeProps {
-  onOpenMenu: () => void;
   cartCount: number;
 }
 
-export const FloatingCartBadge: React.FC<FloatingCartBadgeProps> = ({ onOpenMenu, cartCount }) => {
+export const FloatingCartBadge: React.FC<FloatingCartBadgeProps> = ({ cartCount }) => {
   return (
     <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40">
       <button
-        onClick={onOpenMenu}
+        onClick={openOrderMenu}
         className="bg-[#C5A059] hover:bg-[#D4AF37] text-black font-bold text-sm tracking-[0.14em] py-4 px-2.5 rounded-l-md shadow-2xl flex flex-col items-center gap-2 group transition-all duration-300 border-l border-t border-b border-[#E5C158]"
         style={{ writingMode: 'vertical-rl', textTransform: 'uppercase' }}
       >
