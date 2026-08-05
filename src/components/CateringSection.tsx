@@ -3,8 +3,15 @@ import { Briefcase, Cake, Heart, Users, MessageSquare } from 'lucide-react';
 import { CateringFormState } from '../types';
 import { imageCdn } from '../data/imageCdn';
 import { contactInfo } from '../data/contactInfo';
+import { getResponsiveImageProps } from '../utils/responsiveImages';
 
 export const CateringSection: React.FC = () => {
+  const cateringImageProps = getResponsiveImageProps(
+    imageCdn.catering,
+    '(min-width: 1024px) 50vw, 100vw',
+    [480, 768, 960, 1200, 1400, 1600],
+  );
+
   const [formData, setFormData] = useState<CateringFormState>({
     name: '',
     phone: '',
@@ -80,10 +87,14 @@ Message: ${formData.message.trim() || 'None'}`;
             {/* Background image & gradient overlay */}
             <div className="absolute inset-0 z-0">
               <img
-                src={imageCdn.catering}
+                {...cateringImageProps}
                 alt="Harrison Spice Catering Services"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                width="1400"
+                height="933"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/70"></div>
             </div>
@@ -139,7 +150,9 @@ Message: ${formData.message.trim() || 'None'}`;
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
+                    <label className="sr-only" htmlFor="catering-name">Your name</label>
                     <input
+                      id="catering-name"
                       type="text"
                       placeholder="Your Name *"
                       autoComplete="name"
@@ -152,7 +165,9 @@ Message: ${formData.message.trim() || 'None'}`;
                   </div>
 
                   <div>
+                    <label className="sr-only" htmlFor="catering-phone">Phone number</label>
                     <input
+                      id="catering-phone"
                       type="tel"
                       placeholder="Phone Number *"
                       autoComplete="tel"
@@ -166,7 +181,9 @@ Message: ${formData.message.trim() || 'None'}`;
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label className="sr-only" htmlFor="catering-event-type">Event type</label>
                   <select
+                    id="catering-event-type"
                     value={formData.eventType}
                     onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
                     className="w-full px-4 py-3 rounded bg-[#FAF8F5] text-gray-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-black border-none shadow-inner"
@@ -177,7 +194,9 @@ Message: ${formData.message.trim() || 'None'}`;
                     <option value="Private Functions">Private Functions</option>
                   </select>
 
+                  <label className="sr-only" htmlFor="catering-event-date">Event date</label>
                   <input
+                    id="catering-event-date"
                     type="date"
                     value={formData.eventDate}
                     onChange={(e) => setFormData({ ...formData, eventDate: e.target.value })}
@@ -185,7 +204,9 @@ Message: ${formData.message.trim() || 'None'}`;
                   />
                 </div>
                 <div>
+                  <label className="sr-only" htmlFor="catering-guests">Number of guests</label>
                   <input
+                    id="catering-guests"
                     type="number"
                     min="1"
                     placeholder="No. of Guests"
@@ -196,7 +217,9 @@ Message: ${formData.message.trim() || 'None'}`;
                   {errors.guestsCount && <p className="mt-1 text-xs text-red-700">{errors.guestsCount}</p>}
                 </div>
 
+                <label className="sr-only" htmlFor="catering-message">Your message</label>
                 <textarea
+                  id="catering-message"
                   placeholder="Your Message..."
                   rows={3}
                   value={formData.message}

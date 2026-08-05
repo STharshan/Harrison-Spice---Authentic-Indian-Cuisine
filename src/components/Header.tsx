@@ -59,6 +59,8 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
               src={logoImg}
               alt="Harrison Spice Logo"
               className="w-full h-full object-cover"
+              width="120"
+              height="80"
             />
 
             {/* Delicate gold top accent */}
@@ -93,6 +95,7 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
               onClick={onOpenCart}
               className="relative p-2 rounded-full border border-[#C5A059]/40 bg-[#161616] text-[#C5A059] hover:bg-[#C5A059]/20 transition-all"
               title="View Cart"
+              aria-label={`View basket with ${cartCount} item${cartCount === 1 ? '' : 's'}`}
             >
               <ShoppingBag className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 bg-[#C5A059] text-black font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center">
@@ -116,6 +119,7 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
             <button
               onClick={onOpenCart}
               className="relative p-2 rounded-full border border-[#C5A059] text-[#C5A059]"
+              aria-label={`View basket with ${cartCount} item${cartCount === 1 ? '' : 's'}`}
             >
               <ShoppingBag className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 bg-[#C5A059] text-black font-bold text-[11px] w-4 h-4 rounded-full flex items-center justify-center">

@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Maximize2 } from 'lucide-react';
 import { galleryData } from '../data/galleryData';
 import { GalleryItem } from '../types';
-import logo from "../assets/images/logo.png"
+import { getResponsiveImageProps } from '../utils/responsiveImages';
 
 interface GallerySectionProps {
   onSelectImage: (item: GalleryItem) => void;
@@ -43,10 +43,13 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onSelectImage })
               className="relative h-64 sm:h-38 rounded-xl overflow-hidden cursor-pointer group shadow-md border border-gray-200/80 bg-gray-100"
             >
               <img
-                src={logo}
+                {...getResponsiveImageProps(item.image, '(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw', [320, 480, 640, 768, 960])}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                width="960"
+                height="720"
               />
 
               {/* Overlay on hover */}
