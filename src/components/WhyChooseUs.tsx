@@ -30,9 +30,9 @@ export const WhyChooseUs: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12" data-aos="fade-up">
-          <p className="text-sm font-bold tracking-[0.25em] text-[#C5A059] uppercase">
+          <h2 className="text-sm font-bold tracking-[0.25em] text-[#C5A059] uppercase">
             WHY CHOOSE HARRISON SPICE?
-          </p>
+          </h2>
         </div>
 
         {/* 4 Feature Columns with vertical divider lines */}

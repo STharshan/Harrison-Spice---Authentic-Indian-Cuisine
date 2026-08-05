@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -26,6 +27,10 @@ export default function App() {
 
   // Initialize AOS animations
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     AOS.init({
       duration: 800,
       once: true,

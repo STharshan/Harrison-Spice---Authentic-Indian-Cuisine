@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { imageCdn } from '../data/imageCdn';
 import { MenuItem } from '../types';
+import { getResponsiveImageProps } from '../utils/responsiveImages';
 
 interface SignatureDishesProps {
   onOpenMenu: () => void;
@@ -13,56 +13,56 @@ export const SignatureDishes: React.FC<SignatureDishesProps> = ({ onOpenMenu, on
   const signatureDishes = dishes.filter((d) => d.isPopular).slice(0, 5);
 
   return (
-    <section id="menu" className="py-20 bg-[#0b0b0b] text-white relative overflow-hidden border-t border-b border-[#C5A059]/20">
-      {/* Background subtle radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#C5A059]/5 rounded-full blur-3xl pointer-events-none"></div>
+    <section
+      id="menu"
+      className="relative overflow-hidden border-y border-[#C5A059]/20 bg-[#0b0b0b] py-20 text-white"
+    >
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C5A059]/5 blur-3xl"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
-          <p className="text-base font-bold tracking-[0.22em] text-[#C5A059] uppercase mb-3">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-14 max-w-2xl text-center" data-aos="fade-up">
+          <p className="mb-3 text-base font-bold uppercase tracking-[0.22em] text-[#C5A059]">
             OUR SIGNATURE DISHES
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-white font-normal leading-tight">
+          <h2 className="text-3xl font-serif font-normal leading-tight text-white sm:text-4xl lg:text-5xl">
             Discover Our Most Loved Dishes
           </h2>
         </div>
 
-        {/* 5 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mb-12">
+        <div className="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {signatureDishes.map((dish, idx) => (
             <div
               key={dish.id}
               data-aos="fade-up"
               data-aos-delay={idx * 100}
-              className="bg-[#121212] border border-[#C5A059]/35 hover:border-[#C5A059] rounded-xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 shadow-xl group hover:shadow-[#C5A059]/10"
+              className="group flex flex-col items-center rounded-xl border border-[#C5A059]/35 bg-[#121212] p-5 text-center shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#C5A059] hover:shadow-[#C5A059]/10"
             >
-              {/* Circular Dish Image */}
               {dish.image && (
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-[#C5A059]/50 mb-4 p-1 bg-black shrink-0 group-hover:border-[#C5A059] transition-colors">
+                <div className="mb-4 h-28 w-28 shrink-0 overflow-hidden rounded-full border-2 border-[#C5A059]/50 bg-black p-1 transition-colors group-hover:border-[#C5A059] sm:h-32 sm:w-32">
                   <img
-                    src={dish.image}
+                    {...getResponsiveImageProps(dish.image, '128px', [128, 192, 256, 384])}
                     alt={dish.name}
-                    className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
+                    className="h-full w-full rounded-full object-cover transition-transform duration-500 group-hover:scale-110"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
+                    sizes="128px"
+                    width="256"
+                    height="256"
                   />
                 </div>
               )}
 
-              {/* Title */}
-              <h3 className="font-serif text-base sm:text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#C5A059] transition-colors">
+              <h3 className="mb-2 font-serif text-base font-semibold leading-snug text-white transition-colors group-hover:text-[#C5A059] sm:text-lg">
                 {dish.name}
               </h3>
 
-              {/* Description */}
-              <p className="text-base text-gray-400 font-light mb-4 line-clamp-3 leading-relaxed flex-grow">
+              <p className="mb-4 flex-grow text-base font-light leading-relaxed text-gray-400 line-clamp-3">
                 {dish.description}
               </p>
 
-              {/* Order Button */}
               <button
                 onClick={() => onAddToCart(dish)}
-                className="mt-auto px-4 py-2 rounded border border-[#C5A059]/70 hover:bg-[#C5A059] hover:text-black text-[#C5A059] text-base font-bold uppercase tracking-[0.15em] transition-all duration-200"
+                className="mt-auto rounded border border-[#C5A059]/70 px-4 py-2 text-base font-bold uppercase tracking-[0.15em] text-[#C5A059] transition-all duration-200 hover:bg-[#C5A059] hover:text-black"
               >
                 ORDER NOW (£{dish.price.toFixed(2)})
               </button>
@@ -70,14 +70,13 @@ export const SignatureDishes: React.FC<SignatureDishesProps> = ({ onOpenMenu, on
           ))}
         </div>
 
-        {/* View Full Menu CTA */}
         <div className="text-center" data-aos="fade-up">
           <button
             onClick={onOpenMenu}
-            className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-[#C5A059] bg-transparent hover:bg-[#C5A059] text-[#C5A059] hover:text-black text-base font-bold uppercase tracking-[0.18em] transition-all duration-300 shadow-md group"
+            className="group inline-flex items-center gap-3 rounded-full border border-[#C5A059] bg-transparent px-8 py-3.5 text-base font-bold uppercase tracking-[0.18em] text-[#C5A059] shadow-md transition-all duration-300 hover:bg-[#C5A059] hover:text-black"
           >
             VIEW FULL MENU
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
       </div>

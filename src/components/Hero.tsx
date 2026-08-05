@@ -2,21 +2,29 @@ import React from 'react';
 import { ArrowRight, Clock, Star, Truck } from 'lucide-react';
 import { imageCdn } from '../data/imageCdn';
 import { openOrderMenu } from '../utils/openorder';
+import { getResponsiveImageProps } from '../utils/responsiveImages';
 
 interface HeroProps {
   onOpenMenu: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenMenu }) => {
+  const heroImageProps = getResponsiveImageProps(imageCdn.hero, '100vw', [480, 768, 1024, 1280, 1600, 1920]);
+
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-between pt-28 pb-12 overflow-hidden bg-black">
       {/* Background Image with Dark Vignette Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={imageCdn.hero}
+          {...heroImageProps}
           alt="Authentic Indian Cuisine Curry"
           className="w-full h-full object-cover object-center scale-105 animate-pulse-subtle"
           referrerPolicy="no-referrer"
+          loading="eager"
+          fetchPriority="high"
+          sizes="100vw"
+          width="1600"
+          height="900"
         />
         {/* Gradients to match the reference dark atmospheric mood */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50"></div>

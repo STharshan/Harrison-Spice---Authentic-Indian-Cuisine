@@ -38,8 +38,8 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <p className="text-base text-gray-400 font-medium">Address</p>
                   <p className="text-base sm:text-lg font-semibold text-white leading-snug">
-                    63b Leicester Road, Mountsorrel, <br />
-                    Leicestershire, LE12 7AJ
+                    {contactInfo.addressLine1}, <br />
+                    {contactInfo.addressLine2}
                   </p>
                 </div>
               </div>
@@ -74,11 +74,11 @@ export const ContactSection: React.FC = () => {
             <div className="absolute bottom-6 left-6 bg-black/90 border border-[#C5A059]/60 p-4 rounded-lg shadow-2xl backdrop-blur-md max-w-xs">
               <div className="flex items-center gap-2 mb-1">
                 <MapPin className="w-4 h-4 text-red-500 fill-red-500" />
-                <span className="font-serif font-bold text-white text-base">Harrison Spice</span>
+                <span className="font-serif font-bold text-white text-base">{contactInfo.businessName}</span>
               </div>
-              <p className="text-base text-gray-300">26 Leicester Rd, Mountsorrel LE12 7AJ</p>
+              <p className="text-base text-gray-300">{contactInfo.mapLabel}</p>
               <a
-                href="https://maps.google.com/?q=26+Leicester+Road+Mountsorrel+LE12+7AJ"
+                href={`https://maps.google.com/?q=${contactInfo.mapsQuery}`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-block mt-2 text-base font-bold text-[#C5A059] hover:underline uppercase tracking-[0.14em]"

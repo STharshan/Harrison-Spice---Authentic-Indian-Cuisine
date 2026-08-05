@@ -1,12 +1,19 @@
 import React from 'react';
 import { ArrowRight, Leaf, Utensils, Award, ShoppingBag } from 'lucide-react';
 import { imageCdn } from '../data/imageCdn';
+import { getResponsiveImageProps } from '../utils/responsiveImages';
 
 interface AboutSectionProps {
   onOpenMenu: () => void;
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenMenu }) => {
+  const aboutImageProps = getResponsiveImageProps(
+    imageCdn.about,
+    '(min-width: 1024px) 50vw, 100vw',
+    [480, 768, 960, 1200, 1440],
+  );
+
   const highlights = [
     {
       icon: Leaf,
@@ -34,10 +41,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenMenu }) => {
           <div className="relative" data-aos="fade-right" data-aos-duration="1000">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src={imageCdn.about}
+                {...aboutImageProps}
                 alt="Authentic Indian Spices at Harrison Spice"
                 className="w-full h-[420px] sm:h-[480px] object-cover hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                width="1200"
+                height="900"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             </div>
